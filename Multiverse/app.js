@@ -272,7 +272,7 @@ function updateBibleWordBar() {
       const note = Store.getNoteById(noteId);
       if (!note) return;
       const verseRef = selectedBook + " " + selectedChapter + ":" + (detailPanel.querySelector(".bible-verse[style]") ? detailPanel.querySelector(".bible-verse[style]").dataset.verse : "");
-      const append = "<br><br>[" + verseRef + "] " + text;
+      const append = "<br><br>[" + verseRef + "]<br>" + text;
       Store.updateNote(noteId, { text: (note.text || "") + append });
       if (!note.chapters.includes(selectedChapterKey)) {
         Store.attachNoteToChapter(noteId, selectedChapterKey);
