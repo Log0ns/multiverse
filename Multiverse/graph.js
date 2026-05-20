@@ -360,7 +360,8 @@ const Graph = (() => {
 
   function animateTo(wx, wy, onDone) {
     const startX = camera.x, startY = camera.y;
-    const endX = -wx * camera.zoom, endY = -wy * camera.zoom;
+    const panelWidth = document.getElementById('detail-panel') && document.getElementById('detail-panel').offsetWidth && document.getElementById('detail-panel').style.display !== 'none' ? document.getElementById('detail-panel').offsetWidth : 0;
+    const endX = -wx * camera.zoom - panelWidth / 2, endY = -wy * camera.zoom;
     const duration = 400, t0 = performance.now();
     function tick() {
       const p = Math.min((performance.now() - t0) / duration, 1);
