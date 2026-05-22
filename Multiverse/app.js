@@ -210,7 +210,7 @@ function updateBiblePanel() {
   html += '<div class="dp-body">';
   const chNotes = Store.getNotesForChapter(selectedChapterKey);
   if (chNotes.length > 0) {
-    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #374151;">';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #374151;position:sticky;top:-16px;background:#111827;z-index:2;padding-top:16px;margin-top:-16px;">';
     for (const cn of chNotes) {
       html += '<button class="dp-note-btn" data-nid="' + cn.id + '" style="font-size:0.68rem;padding:2px 6px;background:#1f2937;border:1px solid ' + cn.color + ';color:' + cn.color + ';border-radius:3px;cursor:pointer;">' + cn.title + '</button>';
     }
