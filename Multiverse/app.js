@@ -852,7 +852,7 @@ function showEditPanel(id) {
       pendingChapters = [...note.chapters];
       pendingLinked = [...note.linkedNotes];
     }
-    const splitPref = localStorage.getItem('edit-split-view') === '1';
+    const splitPref = localStorage.getItem('edit-split-view') !== '0';
     let html = '<div class="modal-header"><h2 style="color:' + note.color + ';flex:1;">' + note.title.replace(/</g, "&lt;") + '</h2><button class="split-toggle-btn" title="Split view" style="background:none;border:none;color:' + (splitPref ? '#60a5fa' : '#6b7280') + ';cursor:pointer;font-size:0.9rem;margin-right:12px;">&#9776;</button><button class="modal-close-btn">&times;</button></div>';
     html += '<div class="split-container"><div class="modal-body" style="padding:12px 16px;">';
     html += '<input type="text" id="edit-title-' + id + '" value="' + note.title.replace(/"/g, "&quot;") + '" style="width:100%;font-size:1rem;font-weight:bold;margin-bottom:8px;">';
