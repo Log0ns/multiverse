@@ -1310,6 +1310,16 @@ const Graph = (() => {
   function onTouchEnd(e) {
     e.preventDefault();
     clearTimeout(touchState.longPressTimer);
+    // After pinch, if one finger remains, reset to avoid jump
+    if (touchState.type === 'pinch' && e.touches.length === 1) {
+      touchState.type = 'single';
+      touchState.node = null;
+      touchState.moved = true;
+      const pos = getTouchPos(e.touches[0]);
+      touchState.startX = pos.x;
+      touchState.startY = pos.y;
+      return;
+    }
     if (touchState.type === 'link' && linkDrag) {
       const pos = e.changedTouches.length > 0 ? getTouchPos(e.changedTouches[0]) : { x: linkDrag.mx, y: linkDrag.my };
       const targetNode = findNodeAt(pos.x, pos.y);
