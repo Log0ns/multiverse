@@ -1272,6 +1272,16 @@ const Graph = (() => {
       return;
     }
     if (e.touches.length !== 1) return;
+    if (touchState.type === 'pinch') {
+      // Transitioned from pinch to single finger — reset to avoid jump
+      touchState.type = 'single';
+      touchState.node = null;
+      touchState.moved = true;
+      const pos = getTouchPos(e.touches[0]);
+      touchState.startX = pos.x;
+      touchState.startY = pos.y;
+      return;
+    }
     const pos = getTouchPos(e.touches[0]);
     const dx = pos.x - touchState.startX;
     const dy = pos.y - touchState.startY;
