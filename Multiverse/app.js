@@ -300,7 +300,7 @@ async function updateBiblePanel() {
   if (requestId !== _biblePanelRequestId) return;
   if (!chData || chData.length === 0) { detailPanel.innerHTML = ""; detailPanel.style.display = "none"; detailPanel.classList.remove("active"); return; }
   const translation = chData._translation || 'WEB';
-  let html = '<div class="dp-header"><button class="dp-nav dp-prev">&#9664;</button><h3 style="margin:0;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + selectedBook + " " + ch + ' <span style="font-size:0.65rem;color:#6b7280;font-weight:normal;">(' + translation + ')</span></h3><button class="dp-nav dp-next">&#9654;</button><button class="dp-nav dp-mem-tab" title="Memorize">&#9733;</button>' + (window.innerWidth > 768 ? '<button class="dp-nav dp-split-open" title="Split View">&#9871;</button>' : '') + '<span class="dp-toggle">&#9660;</span></div>';
+  let html = '<div class="dp-header"><button class="dp-nav dp-prev">&#9664;</button><h3 style="margin:0;flex:1;text-align:center;white-space:nowrap;font-size:clamp(0.7rem,2.5vw,1rem);">' + selectedBook + " " + ch + ' <span style="font-size:0.65em;color:#6b7280;font-weight:normal;">(' + translation + ')</span></h3><button class="dp-nav dp-next">&#9654;</button><button class="dp-nav dp-mem-tab" title="Memorize">&#9733;</button>' + (window.innerWidth > 768 ? '<button class="dp-nav dp-split-open" title="Split View">&#9871;</button>' : '') + '<span class="dp-toggle">&#9660;</span></div>';
   html += '<div class="dp-body">';
   const chNotes = Store.getNotesForChapter(selectedChapterKey);
   if (chNotes.length > 0) {
